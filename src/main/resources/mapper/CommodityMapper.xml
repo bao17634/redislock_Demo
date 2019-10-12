@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byr.demo.mapper.CommodityMapper">
+
+    <resultMap type="com.byr.demo.entity.Commodity" id="BaseResultMap">
+        <result property="commodityName" column="commodity_name"/>
+        <result property="commodityCode" column="commodity_code"/>
+        <result property="commodityCount" column="commodity_count"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+          id, commodity_name, commodity_code, commodity_count
+    </sql>
+    <update id="reduceCommodity">
+        update commodity set commodity_count = commodity_count - #{count} where commodity_code = #{commodityCode}
+    </update>
+</mapper>
