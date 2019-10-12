@@ -23,18 +23,18 @@ spring:
         maxOpenPreparedStatements: 20
     redis:
       database: 0
-      password:
-      timeout: 3000
-#      mode: sigle
-      pool:
-        max-wait: 10000
-        min-idle: 5
-        max-idle: 16
-        max-active: 8
+      timeout: 3000ms
 #        哨兵模式配置
 #      sentinel:
 #        master:
 #        nodes:
+      jedis:
+        pool:
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+          max-active: 8
+          time-between-eviction-runs: 3000ms
       cluster:
         nodes:
           - 10.3.0.79:7001

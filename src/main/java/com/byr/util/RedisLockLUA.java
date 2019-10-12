@@ -2,8 +2,10 @@ package com.byr.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.params.SetParams;
 
 import java.util.Collections;
 
@@ -14,6 +16,7 @@ import java.util.Collections;
  * @Date: 2019/10/12 13:45
  * @Version: 1.0
  */
+@Component
 @Slf4j
 public class RedisLockLUA {
     @Autowired
@@ -22,20 +25,20 @@ public class RedisLockLUA {
     protected long internalLockLeaseTime = 30000;//锁过期时间
     private long timeout = 999999; //获取锁的超时时间
     //SET命令的参数
-//    SetParams params = SetParams.setParams().nx().px(internalLockLeaseTime);
+    SetParams params = SetParams.setParams().nx().px(internalLockLeaseTime);
 
     /**
      * 加锁
      * @param value 请求标示
      * @return
      */
-    public boolean lock(String value) {
+    public boolean lock(String key,String value) {
         Jedis jedis = jedisPool.getResource();
         Long start = System.currentTimeMillis();
         try {
             while (true) {
                 //SET命令返回OK ，则证明获取锁成功
-                String lock = jedis.set(lock_key, value);
+                String lock = jedis.set(key, value);
                 if ("OK".equals(lock)) {
                     return true;
                 }
@@ -59,11 +62,11 @@ public class RedisLockLUA {
 
     /**
      * 释放分布式锁
-     * @param lockKey 锁
+     * @param key 锁
      * @param value 请求标识
      * @return 是否释放成功
      */
-    public boolean unlock(String lockKey,String value){
+    public boolean unlock(String key,String value){
         Jedis jedis = jedisPool.getResource();
         String script =
                 "if redis.call('get',KEYS[1]) == ARGV[1] then " +
@@ -71,7 +74,7 @@ public class RedisLockLUA {
                         "else  return 0 " +
                         "end";
         try {
-            Object result = jedis.eval(script, Collections.singletonList(lock_key),
+            Object result = jedis.eval(script, Collections.singletonList(key),
                     Collections.singletonList(value));
             if("1".equals(result.toString())){
                 return true;
