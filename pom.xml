@@ -43,6 +43,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+            <!--这里版本不要太高，不然会报jedisPool没有注入的错误-->
             <version>3.0.1</version>
         </dependency>
         <dependency>

@@ -1,0 +1,73 @@
+{
+  "groups": [
+    {
+      "name": "redis.config",
+      "type": "com.byr.config.RedisProperties",
+      "sourceType": "com.byr.config.RedisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "redis.config.host",
+      "type": "java.lang.String",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.max-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.max-total",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.max-wait-millis",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.min-evictable-idle-time-millis",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.min-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.num-tests-per-eviction-run",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.password",
+      "type": "java.lang.String",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties",
+      "defaultValue": 0
+    },
+    {
+      "name": "redis.config.retry-num",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.time-between-eviction-runs-millis",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    },
+    {
+      "name": "redis.config.timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "com.byr.config.RedisProperties"
+    }
+  ],
+  "hints": []
+}

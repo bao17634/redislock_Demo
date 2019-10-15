@@ -12,26 +12,26 @@ import com.byr.util.MyMapper;
 public interface CommodityService {
     /**
      * redis get、set方式实现分布式锁
-     * @param commodityCode
+     * @param value
      * @param key
      * @return
      * @throws InterruptedException
      */
-    Integer getSetReduce(String commodityCode, String key)throws InterruptedException;
+    Integer getSetReduce(String value, String key)throws InterruptedException;
 
     /**
      * redisson 实现分布式锁
-     * @param commodityCode
+     * @param value
      * @param key
      * @return
      */
-    Integer redissonReduce(String commodityCode, String key) throws InterruptedException;
+    Integer redissonReduce(String value, String key) throws InterruptedException;
 
     /**
-     * redis 利用LUA脚本语言实现分布式锁
-     * @param commodityCode
+     * redis 实现集群redis分布式锁
+     * @param value
      * @param key
      * @return
      */
-    Integer redisLUAReduce(String commodityCode, String key);
+    Integer redisLUAReduce(String value, String key);
 }

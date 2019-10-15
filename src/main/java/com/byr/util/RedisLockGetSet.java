@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @ClassName: RedisLock
+ * @ClassName: RedissonLockService
  * @Description: redis锁
  * @Author: yanrong
  * @Date: 2019/10/9 11:16
@@ -21,30 +21,18 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Slf4j
 public class RedisLockGetSet {
-
-
     @Autowired
     private RedisTemplate redisTemplate;
-
     private static final int DEFAULT_ACQUIRY_RESOLUTION_MILLIS = 200;
-
-    /**
-     * Lock key path.
-     */
-//    private String lockKey;
 
     /**
      * 锁超时时间，防止线程在入锁以后，无限的执行等待
      */
     private int expireMsecs = 60 * 1000;
-
     /**
      * 锁等待时间，防止线程饥饿
      */
     private int timeoutMsecs = 10 * 1000;
-
-    private volatile boolean locked = false;
-
     /**
      * @return lock key
      */
@@ -57,7 +45,6 @@ public class RedisLockGetSet {
 
     /**
      * 写入缓存，如果key不存在才写入，用于锁，同时设置key过期时间
-     *
      * @param key
      * @param value
      * @param expireTime 锁超时时间
@@ -78,7 +65,6 @@ public class RedisLockGetSet {
 
     /**
      * 设置新的value的值，并返回旧值
-     *
      * @param key
      * @param value
      * @return
@@ -92,7 +78,6 @@ public class RedisLockGetSet {
             throw new RuntimeException(e);
         }
     }
-
     /**
      * 获得 lock.
      * 实现思路: 主要是使用了redis 的setnx命令,缓存了锁.

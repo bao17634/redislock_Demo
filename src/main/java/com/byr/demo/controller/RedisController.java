@@ -22,13 +22,34 @@ public class RedisController {
     @Autowired
     private CommodityService commodityService;
 
-    @RequestMapping(value = "redisTest")
-    public Integer redisTest() throws InterruptedException {
+    @RequestMapping(value = "redisGetSet")
+    public Integer redisGetSetController() throws InterruptedException {
+        Integer reduce = 0;
+        try {
+            reduce = commodityService.getSetReduce("9c63d5", "11222");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return reduce;
+    }
+    @RequestMapping(value = "redisson")
+    public Integer redissonController() throws InterruptedException {
         Integer reduce = 0;
         String uuid = UUID.randomUUID().toString().replace("-", "").substring(0, 6);
         try {
-            reduce = commodityService.reduce("9c63d5", "11222");
-        } catch (InterruptedException e) {
+            reduce = commodityService.redissonReduce(uuid, "11222");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return reduce;
+    }
+    @RequestMapping(value = "redisLUA")
+    public Integer redisLUAController() throws InterruptedException {
+        Integer reduce = 0;
+        String uuid = UUID.randomUUID().toString().replace("-", "").substring(0, 6);
+        try {
+            reduce = commodityService.redisLUAReduce(uuid, "11222");
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return reduce;

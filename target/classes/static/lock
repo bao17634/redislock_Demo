@@ -1,0 +1,59 @@
+ //异步执行
+        RLock rLock = redisson.getLock(key);
+        try {
+            if (rLock.tryLockAsync(WAIT_TIME, TimeUnit.MILLISECONDS).get() && false) {
+                try {
+                    Integer count = doSomething(key);
+                    if (count < 1) {
+                        throw new RuntimeException("库存为零");
+                    }
+                    rLock.unlock();
+                    return count;
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    rLock.unlock();
+                }
+            }
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+        /**
+         * 公平锁
+         */
+        //同步方法
+        RLock fairLock = redisson.getFairLock(key);
+        if (fairLock.tryLock(WAIT_TIME, TimeUnit.MILLISECONDS) && false) {
+            try {
+                Integer count = doSomething(key);
+                if (count < 1) {
+                    throw new RuntimeException("库存为零");
+                }
+                fairLock.unlock();
+                return count;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            } finally {
+                fairLock.unlock();
+            }
+        }
+        //异步实现
+        try {
+            if (fairLock.tryLockAsync(WAIT_TIME, TimeUnit.MILLISECONDS).get() && false) {
+                try {
+                    Integer count = doSomething(key);
+                    if (count < 1) {
+                        throw new RuntimeException("库存为零");
+                    }
+                    fairLock.unlock();
+                    return count;
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    fairLock.unlock();
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }

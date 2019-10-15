@@ -23,7 +23,7 @@ spring:
         maxOpenPreparedStatements: 20
     redis:
       database: 0
-      timeout: 3000ms
+      timeout: 10000ms
 #        哨兵模式配置
 #      sentinel:
 #        master:
