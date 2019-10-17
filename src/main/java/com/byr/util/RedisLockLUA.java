@@ -2,21 +2,17 @@ package com.byr.util;
 
 import com.byr.config.RedisPoolConfig;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.params.SetParams;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
+
 import java.util.Collections;
 
 /**
  * @ClassName: RedisLockLUA
- * @Description: redis分布式锁，锁不具有重入性
+ * @Description: redis分布式锁
  * @Author: yanrong
  * @Date: 2019/10/12 13:45
  * @Version: 1.0
@@ -27,8 +23,10 @@ public class RedisLockLUA {
 
     @Resource
     RedisPoolConfig jedisPool;
-    protected long internalLockLeaseTime = 30 * 1000;//锁过期时间
-    private long TIME_OUT = 30 * 1000; //获取锁的超时时间
+    private long internalLockLeaseTime = 30 * 1000;//锁过期时间
+    private long TIME_OUT = 5 * 1000; //获取锁的超时时间，这里改成了5秒
+    //循环时间间隔（根据自己的业务执行时间来设置）
+    private long INTERVAL_TIME = 1000;
     //SET命令的参数
     SetParams params = SetParams.setParams().nx().px(internalLockLeaseTime);
 
@@ -38,8 +36,7 @@ public class RedisLockLUA {
      * @return
      */
     public boolean lock(String key, String value) {
-        JedisCluster jedis=jedisPool.JedisClusterConfig();
-//        Jedis jedis = jedisPool.getPool().getResource();
+        JedisCluster jedis = jedisPool.JedisClusterConfig();
         Long startTime = System.currentTimeMillis();
         try {
             while (true) {
@@ -54,7 +51,7 @@ public class RedisLockLUA {
                     if (waitTime >= TIME_OUT) {
                         return false;
                     }
-                    Thread.sleep(100);
+                    Thread.sleep(INTERVAL_TIME);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -74,11 +71,11 @@ public class RedisLockLUA {
      * @return 是否释放成功
      */
     public boolean unlock(String key, String value) {
-        JedisCluster jedis=jedisPool.JedisClusterConfig();
+        JedisCluster jedis = jedisPool.JedisClusterConfig();
         String script = "if redis.call('get',KEYS[1]) == ARGV[1] then " +
-                        " return redis.call('del',KEYS[1]) " +
-                        "else  return 0 " +
-                        "end";
+                " return redis.call('del',KEYS[1]) " +
+                "else  return 0 " +
+                "end";
         try {
             Object result = jedis.eval(script, Collections.singletonList(key),
                     Collections.singletonList(value));

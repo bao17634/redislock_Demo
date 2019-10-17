@@ -4,6 +4,7 @@ package com.byr.demo.service.impl;
 import com.byr.demo.service.CommodityService;
 import com.byr.util.RedisLockGetSet;
 import com.byr.util.RedisLockLUA;
+import com.byr.util.RedisLockLUA2;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
@@ -38,10 +39,13 @@ public class CommodityServiceImpl implements CommodityService {
     @Autowired
     private Redisson redisson;
     /**
-     *  redis实现集群锁
+     * redis实现集群锁
      */
     @Autowired
     private RedisLockLUA redisLockLUA;
+
+    @Autowired
+    private RedisLockLUA2 redisLockLUA2;
     //线程等待时间
     final static long WAIT_TIME = 10 * 1000;
     // 模拟库存
@@ -57,7 +61,6 @@ public class CommodityServiceImpl implements CommodityService {
      * @param value 货物编码
      * @return
      */
-    @Transactional
     public Integer getSetReduce(String value, String key) throws InterruptedException {
         log.info("第:{}个线程", ++THREAD_COUNT);
         if (redisLockGetSet.lock(key)) {
@@ -66,7 +69,6 @@ public class CommodityServiceImpl implements CommodityService {
                 if (count < 1) {
                     throw new RuntimeException("减库存数量为零");
                 }
-                redisLockGetSet.unlock(key);
                 return count;
             } catch (Exception e) {
                 throw new RuntimeException("减库存失败", e);
@@ -85,13 +87,12 @@ public class CommodityServiceImpl implements CommodityService {
         /**
          *  可重入锁,线程等待WAIT_TiME 就会自动释放锁
          */
-        if (lock.tryLock(WAIT_TIME, TimeUnit.MILLISECONDS) && true) {
+        if (lock.tryLock(WAIT_TIME, TimeUnit.MILLISECONDS)) {
             try {
                 Integer count = doSomething(key);
                 if (count < 1) {
                     throw new RuntimeException("库存为零");
                 }
-                lock.unlock();
                 return count;
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -105,18 +106,17 @@ public class CommodityServiceImpl implements CommodityService {
     @Override
     public Integer redisLUAReduce(String value, String key) {
         log.info("第:{}个线程", ++THREAD_COUNT);
-        if (redisLockLUA.lock(key, value)) {
+        if (redisLockLUA2.lock(key, value)) {
             try {
                 Integer count = doSomething(key);
                 if (count < 1) {
                     throw new RuntimeException("库存为零");
                 }
-                redisLockLUA.unlock(key, value);
                 return count;
             } catch (Exception e) {
                 throw new RuntimeException(e);
             } finally {
-                redisLockLUA.unlock(key, value);
+                redisLockLUA2.unlock(key, value);
             }
         }
         return null;
@@ -124,6 +124,7 @@ public class CommodityServiceImpl implements CommodityService {
 
     /**
      * 业务
+     *
      * @param key
      * @return
      */
@@ -133,7 +134,6 @@ public class CommodityServiceImpl implements CommodityService {
         if (NUMMBER < 1) {
             throw new RuntimeException("资源为零");
         }
-        redisLockGetSet.unlock(key);
         return NUMMBER;
     }
 }

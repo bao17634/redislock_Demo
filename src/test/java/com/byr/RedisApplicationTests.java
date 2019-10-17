@@ -1,6 +1,7 @@
 package com.byr;
 
 
+import com.byr.util.RedisLockLUA2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,7 +21,8 @@ public class RedisApplicationTests {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
-
+    @Autowired
+    RedisLockLUA2 redisLockLUA2;;
 
     @Test
     public void redisTest() {
@@ -45,5 +47,6 @@ public class RedisApplicationTests {
 
     @Test
     public void contextLoads() {
+
     }
 }

@@ -30,24 +30,6 @@ public class RedisPoolConfig {
         JedisPoolConfig config = new JedisPoolConfig();
         return new JedisPool(config);
     }
-
-    public Jedis getJedis() {
-        Jedis jedis = null;
-        int count = 0;
-        do {
-            try {
-                jedis = getPool().getResource();
-                count++;
-            } catch (Exception e) {
-                log.error("get jedis failed ", e);
-                if (jedis != null) {
-                    jedis.close();
-                }
-            }
-        } while (jedis == null && count < RENTRY_NUM);
-        return jedis;
-    }
-
     public JedisCluster JedisClusterConfig() {
         this.getPool();
         JedisCluster jedisCluster = null;
