@@ -27,7 +27,7 @@ public class RedisController {
         String uuid = UUID.randomUUID().toString().replace("-", "").substring(0, 6);
         Integer reduce = 0;
         try {
-            reduce = commodityService.getSetReduce(uuid, "11222");
+            reduce = commodityService.getSetReduce(uuid, "9c63dr");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -49,7 +49,18 @@ public class RedisController {
         Integer reduce = 0;
         String uuid = UUID.randomUUID().toString().replace("-", "").substring(0, 6);
         try {
-            reduce = commodityService.redisLUAReduce(uuid, "9g63ed4");
+            reduce = commodityService.redisLUAReduce(uuid, "9g63ew4");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return reduce;
+    }
+    @RequestMapping(value = "redisLUA2")
+    public Integer redisLUA2Controller() throws InterruptedException {
+        Integer reduce = 0;
+        String uuid = UUID.randomUUID().toString().replace("-", "").substring(0, 6);
+        try {
+            reduce = commodityService.redisLUA2Reduce(uuid, "9g6e443y6");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

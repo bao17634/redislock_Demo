@@ -23,19 +23,11 @@ import java.util.concurrent.TimeUnit;
 public class RedisLockGetSet {
     @Autowired
     private RedisTemplate redisTemplate;
-    /**
-     * 循环间隔时间(根据自己业务执行时间设置)
-     */
-    private static final int DEFAULT_ACQUIRY_RESOLUTION_MILLIS = 200;
     private boolean LOCKED = false;
     /**
      * 锁超时时间，防止线程在入锁以后，无限的执行等待（这个时间根据自己业务执行时间来设定）
      */
-    private int WXPIRE_MESECS = 60 * 1000;
-    /**
-     * 锁等待时间，防止线程饥饿（这个时间根据自己业务执行时间来设定）
-     */
-    private int TIMEOUT_MESECS = 10 * 1000;
+    private int WXPIRE_MESECS = 30 * 1000;
 
     /**
      * @return lock key
@@ -98,9 +90,9 @@ public class RedisLockGetSet {
      * @throws InterruptedException in case of thread interruption
      */
     public synchronized boolean lock(String lockKey) throws InterruptedException {
-        int timeout = TIMEOUT_MESECS / 10;
         try {
-            while (timeout >= 0) {
+            long start = System.currentTimeMillis();
+            while ((System.currentTimeMillis() - start) <= WXPIRE_MESECS) {
                 //当前时间+key过期时间，作为value进行存储
                 long expires = System.currentTimeMillis() + WXPIRE_MESECS + 1;
                 String expiresStr = String.valueOf(expires);
@@ -130,11 +122,6 @@ public class RedisLockGetSet {
                         return true;
                     }
                 }
-                timeout -= DEFAULT_ACQUIRY_RESOLUTION_MILLIS;
-                /**
-                 * 休眠线程，防止出过多的线程出现饥饿问题(根据自己业务执行时间设置)
-                 */
-                Thread.sleep(DEFAULT_ACQUIRY_RESOLUTION_MILLIS);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

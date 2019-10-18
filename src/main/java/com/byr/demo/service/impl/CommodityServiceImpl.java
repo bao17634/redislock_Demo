@@ -106,6 +106,25 @@ public class CommodityServiceImpl implements CommodityService {
     @Override
     public Integer redisLUAReduce(String value, String key) {
         log.info("第:{}个线程", ++THREAD_COUNT);
+        if (redisLockLUA.lock(key, value)) {
+            try {
+                Integer count = doSomething(key);
+                if (count < 1) {
+                    throw new RuntimeException("库存为零");
+                }
+                return count;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            } finally {
+                redisLockLUA.unlock(key, value);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Integer redisLUA2Reduce(String value, String key) {
+        log.info("第:{}个线程", ++THREAD_COUNT);
         if (redisLockLUA2.lock(key, value)) {
             try {
                 Integer count = doSomething(key);

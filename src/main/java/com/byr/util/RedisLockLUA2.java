@@ -14,9 +14,11 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.params.SetParams;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName: RedisLockLUA
@@ -31,11 +33,7 @@ public class RedisLockLUA2 {
     @Autowired
     private RedisTemplate redisTemplate;
     //锁过期时间
-    private long LOCK_LEASE_TIME = 30 * 1000;
-    //线程等待时间（根据自己的业务执行时间来设置）
-    private long WAIT_TIME = 5 * 1000;
-    //循环时间间隔（根据自己的业务执行时间来设置）
-    private long INTERVAL_TIME = 1000;
+    private long TIME_OUT = 30 * 1000;
 
     /**
      * @param key
@@ -43,6 +41,7 @@ public class RedisLockLUA2 {
      * @return
      */
     public boolean lock(String key, String value) {
+        long start = System.currentTimeMillis();
         List<String> list_key = new ArrayList();
         list_key.add(key);
         /**
@@ -57,13 +56,12 @@ public class RedisLockLUA2 {
                 "     return 0 " +
                 "end";
         try {
-            while (WAIT_TIME >= 0) {
+            while ((System.currentTimeMillis() - start) <= TIME_OUT) {
                 RedisScript<String> redis_script = new DefaultRedisScript<>(lua_script, String.class);
-                Object return_flag = redisTemplate.execute(redis_script, list_key, value, String.valueOf(LOCK_LEASE_TIME));
+                Object return_flag = redisTemplate.execute(redis_script, list_key, value, String.valueOf(TIME_OUT));
                 if ("0".equals(String.valueOf(return_flag))) {
                     return true;
                 }
-                WAIT_TIME -= INTERVAL_TIME;
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -81,12 +79,12 @@ public class RedisLockLUA2 {
         try {
             RedisScript<Long> redis_script = new DefaultRedisScript<Long>(var_script, Long.class);
             Object return_flag = redisTemplate.execute(redis_script, list_key, value);
-            if ("0".equals(String.valueOf(return_flag))) {
+            if ("1".equals(String.valueOf(return_flag))) {
                 return true;
             }
-            return false;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 }

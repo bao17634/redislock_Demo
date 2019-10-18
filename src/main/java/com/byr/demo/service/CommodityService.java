@@ -34,4 +34,11 @@ public interface CommodityService {
      * @return
      */
     Integer redisLUAReduce(String value, String key);
+    /**
+     * redis 实现集群redis分布式锁
+     * @param value
+     * @param key
+     * @return
+     */
+    Integer redisLUA2Reduce(String value, String key);
 }

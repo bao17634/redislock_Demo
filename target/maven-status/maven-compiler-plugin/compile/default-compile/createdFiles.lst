@@ -1,13 +1,14 @@
+com\byr\util\RedisLock$1.class
 com\byr\demo\mapper\CommodityMapper.class
 com\byr\util\RedisLockGetSet.class
 com\byr\util\RedisLockLUA.class
+com\byr\util\RedisLockLUA2.class
 com\byr\RedisApplication.class
 com\byr\config\RedisPoolConfig.class
+com\byr\util\RedisLock.class
 com\byr\util\MyMapper.class
 com\byr\config\DruidConfig.class
 com\byr\demo\controller\RedisController.class
 com\byr\demo\service\impl\CommodityServiceImpl.class
 com\byr\demo\entity\Commodity.class
-com\byr\util\TestDistributedRedisLockWithBool$LockWithBoolean.class
-com\byr\util\TestDistributedRedisLockWithBool.class
 com\byr\demo\service\CommodityService.class
