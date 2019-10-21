@@ -3,29 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03659972-5599-4a5c-a9f5-6f46640e54dd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/byr/demo/controller/RedisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/byr/demo/controller/RedisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/byr/demo/service/CommodityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/byr/demo/service/CommodityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/byr/demo/service/impl/CommodityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/byr/demo/service/impl/CommodityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockGetSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockGetSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockLUA2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockLUA2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/byr/util/TestDistributedRedisLockWithBool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/demo/controller/RedisController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/demo/controller/RedisController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/demo/service/CommodityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/demo/service/CommodityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/demo/service/impl/CommodityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/demo/service/impl/CommodityServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLock$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLock$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLockGetSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLockGetSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLockLUA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLockLUA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLockLUA2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/byr/util/RedisLockLUA2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/TestDistributedRedisLockWithBool$LockWithBoolean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/byr/util/TestDistributedRedisLockWithBool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/redis-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/redis-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/redis-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/redis-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2019-10-15T17-44-58_289.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.byr.RedisApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.byr.RedisApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.byr.RedisApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.byr.RedisApplicationTests.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +31,7 @@
       <file leaf-file-name="CommodityServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/demo/service/impl/CommodityServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
+            <state relative-caret-position="2132">
               <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -84,7 +61,7 @@
       <file leaf-file-name="RedisLockLUA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockLUA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
+            <state relative-caret-position="754">
               <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -96,7 +73,7 @@
       <file leaf-file-name="RedisLockLUA2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockLUA2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
+            <state relative-caret-position="1040">
               <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="67" />
             </state>
           </provider>
@@ -145,8 +122,8 @@
       <file leaf-file-name="RedisLockGetSet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockGetSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="130" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="130" />
+            <state relative-caret-position="26">
+              <caret line="130" selection-start-line="23" selection-start-column="3" selection-end-line="130" />
             </state>
           </provider>
         </entry>
@@ -162,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>com.github.p</find>
       <find>PageHelper</find>
       <find>reduceCommodity</find>
       <find>com.byr.demo.mapper</find>
@@ -192,6 +168,7 @@
       <find>params</find>
       <find>lockKeyLog</find>
       <find>RedisProperties</find>
+      <find>WXPIRE_MESECS</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -284,8 +261,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-7" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -296,7 +273,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -438,6 +414,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -629,7 +606,9 @@
       <workItem from="1571101705788" duration="29555000" />
       <workItem from="1571188131765" duration="23265000" />
       <workItem from="1571274733386" duration="18109000" />
-      <workItem from="1571360970851" duration="4620000" />
+      <workItem from="1571360970851" duration="6094000" />
+      <workItem from="1571391290183" duration="273000" />
+      <workItem from="1571621117044" duration="594000" />
     </task>
     <servers />
   </component>
@@ -666,10 +645,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213826000" />
+    <option name="totallyTimeSpent" value="216167000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -680,11 +659,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3033049" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.113413304" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.47437295" />
       <window_info anchor="bottom" id="Spring" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.40458015" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.5011013" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7886179" visible="true" weight="0.1705757" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7886179" visible="true" weight="0.08643326" />
       <window_info anchor="right" id="Bean Validation" order="3" weight="0.32995737" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
@@ -695,35 +674,35 @@
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4968017" weight="0.43572986" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.50319827" side_tool="true" weight="0.30501089" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33115467" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.50319827" side_tool="true" weight="0.30501089" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="4" weight="0.32995737" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.50053304" side_tool="true" weight="0.4379085" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.46673936" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16897655" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Spring" order="11" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.46673936" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32824427" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.50053304" side_tool="true" weight="0.4379085" />
       <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Spring" order="11" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32824427" />
       <window_info anchor="right" id="Bean Validation" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.11014177" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.39585605" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1180,7 +1159,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/demo/service/impl/CommodityServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
+        <state relative-caret-position="2132">
           <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1190,7 +1169,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockLUA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
+        <state relative-caret-position="754">
           <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1200,15 +1179,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockLUA2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
+        <state relative-caret-position="1040">
           <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/byr/util/RedisLockGetSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="130" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="130" />
+        <state relative-caret-position="26">
+          <caret line="130" selection-start-line="23" selection-start-column="3" selection-end-line="130" />
         </state>
       </provider>
     </entry>
